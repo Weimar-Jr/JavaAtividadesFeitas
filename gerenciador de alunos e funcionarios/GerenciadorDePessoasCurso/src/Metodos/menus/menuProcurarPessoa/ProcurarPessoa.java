@@ -1,5 +1,7 @@
-package Metodos;
+package Metodos.menus.menuProcurarPessoa;
 
+import Metodos.ScannerDeRespostas;
+import Metodos.Verificador;
 import dados.Listas;
 
 public class ProcurarPessoa
@@ -18,13 +20,13 @@ public class ProcurarPessoa
                     System.out.println("Pessoa numero: " + (i +1)  + "na lista total de pessoas.");
                     Listas.todos.get(i).mostrarInformacoes();
 
-                    return true;
+                    return false;
                 }
 
             }
 
         }
-        return false;
+        return true;
     }
 
     public  static boolean PesquisaAluno()
@@ -37,59 +39,72 @@ public class ProcurarPessoa
             {
                 if(Listas.alunos.get(i).getNome().equals(procurarPessoa) || Listas.alunos.get(i).getMatricula().equalsIgnoreCase(procurarPessoa))
                 {
-                System.out.println("Aluno numero: " + (i +1)  + "na lista de alunos.");
-                Listas.alunos.get(i).mostrarInformacoes();
+                    System.out.println("Aluno numero: " + (i +1)  + "na lista de alunos.");
+                    Listas.alunos.get(i).mostrarInformacoes();
 
-                return true;
-
+                    return false;
                 }
             }
         }
 
-        return false;
+        return true;
     }
 
-    public boolean PesquisaProfessor()
+    public static boolean PesquisaProfessor()
     {
         System.out.println("Digite o nome do Professor que deseja achar, ou cpf: ");
         String procurarPessoa = ScannerDeRespostas.scannearResposta.nextLine();
 
         if(Verificador.estaVazio(procurarPessoa)) {
-            for (int i = 0; i < Listas.alunos.size(); i++)
+            for (int i = 0; i < Listas.professores.size(); i++)
             {
-                if(Listas.professores.get(i).getNome().equals(procurarPessoa) || Listas.professores.get(i).getCpf() == (Integer.parseInt(procurarPessoa)))
+                if(Listas.professores.get(i).getNome().equals(procurarPessoa) )
                 {
                     System.out.println("Professor numero: " + (i +1)  + "na lista de professores.");
-                    Listas.alunos.get(i).mostrarInformacoes();
+                    Listas.professores.get(i).mostrarInformacoes();
 
-                    return true;
+                    return false;
+                } else if (!Verificador.ehString(procurarPessoa))
+                {
+                    if(Listas.professores.get(i).getCpf() == Integer.parseInt(procurarPessoa)) {
+                        Listas.professores.get(i).mostrarInformacoes();
 
+                        return false;
+                    }
                 }
             }
         }
 
-        return false;
+        return true;
 
     }
-    public boolean PesquisarFuncionario()
+    public static boolean PesquisarFuncionario()
     {
 
         System.out.println("Digite o nome do Funcionario que deseja achar, ou cpf: ");
         String procurarPessoa = ScannerDeRespostas.scannearResposta.nextLine();
 
         if(Verificador.estaVazio(procurarPessoa)) {
-            for (int i = 0; i < Listas.alunos.size(); i++)
+            for (int i = 0; i < Listas.funcionarios.size(); i++)
             {
-                if(Listas.funcionarios.get(i).getNome().equals(procurarPessoa) || Listas.funcionarios.get(i).getCpf() == (Integer.parseInt(procurarPessoa)))
+                if(Listas.funcionarios.get(i).getNome().equals(procurarPessoa))
                 {
                     System.out.println("Professor numero: " + (i +1)  + "na lista de funcionarios.");
-                    Listas.alunos.get(i).mostrarInformacoes();
+                    Listas.funcionarios.get(i).mostrarInformacoes();
 
-                    return true;
+                    return false;
 
+                } else if (!Verificador.ehString(procurarPessoa))
+                {
+                    if(Listas.funcionarios.get(i).getCpf() == Integer.parseInt(procurarPessoa)) {
+                        Listas.funcionarios.get(i).mostrarInformacoes();
+
+                        return false;
+                    }
                 }
+
             }
         }
-        return  false;
+        return  true;
     }
 }

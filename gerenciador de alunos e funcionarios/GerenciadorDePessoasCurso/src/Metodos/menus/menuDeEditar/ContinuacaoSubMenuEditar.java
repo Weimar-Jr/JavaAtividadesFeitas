@@ -1,15 +1,14 @@
-package Metodos.menus;
+package Metodos.menus.menuDeEditar;
 
-import Metodos.EditarPessoa;
 import Metodos.ScannerDeRespostas;
 import Metodos.Verificador;
 import construtores.Alunos;
 import construtores.Funcionarios;
 import construtores.Professores;
 
-public class subMenuEditar
+public class ContinuacaoSubMenuEditar
 {
-    public  boolean editarAluno(Alunos aluno)
+    public static boolean editarAluno(Alunos aluno)
     {
         boolean continuar = true;
 
@@ -40,25 +39,17 @@ public class subMenuEditar
             case 2:
                 System.out.println("Digite a nova idade:");
                 int novaIdade = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novaIdade))) {
                     EditarPessoa.atualizarIdade(aluno, novaIdade);
                     aluno.setIdade(novaIdade);
                     System.out.println("Idade alterada para " + aluno.getIdade() + " com sucesso.");
                     break;
-                }
-                System.out.println("Entrada invalida");
-                break;
 
             case 3:
                 System.out.println("Digite o novo cpf: ");
                 int novoCpf = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novoCpf))) {
-                    EditarPessoa.atualizarCpf(aluno, novoCpf);
-                    aluno.setCpf(novoCpf);
-                    System.out.println("Cpf alterado para " + aluno.getCpf() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarCpf(aluno, novoCpf);
+                aluno.setCpf(novoCpf);
+                System.out.println("Cpf alterado para " + aluno.getCpf() + " com sucesso.");
                 break;
 
             case 4:
@@ -155,25 +146,18 @@ public class subMenuEditar
             case 2:
                 System.out.println("Digite a nova idade:");
                 int novaIdade = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novaIdade))) {
-                    EditarPessoa.atualizarIdade(professor, novaIdade);
-                    professor.setIdade(novaIdade);
-                    System.out.println("Idade alterada para " + professor.getIdade() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarIdade(professor, novaIdade);
+                professor.setIdade(novaIdade);
+                System.out.println("Idade alterada para " + professor.getIdade() + " com sucesso.");
                 break;
 
             case 3:
                 System.out.println("Digite o novo cpf: ");
                 int novoCpf = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novoCpf))) {
-                    EditarPessoa.atualizarCpf(professor, novoCpf);
-                    professor.setCpf(novoCpf);
-                    System.out.println("Cpf alterado para " + professor.getCpf() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+
+                EditarPessoa.atualizarCpf(professor, novoCpf);
+                professor.setCpf(novoCpf);
+                System.out.println("Cpf alterado para " + professor.getCpf() + " com sucesso.");
                 break;
 
             case 4:
@@ -211,15 +195,11 @@ public class subMenuEditar
                 break;
 
             case 7:
-                System.out.println("Digite o novo cpf: ");
+                System.out.println("Digite o novo salario: ");
                 int novoSalario = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novoSalario))) {
-                    EditarPessoa.atualizarCpf(professor, novoSalario);
-                    professor.setCpf(novoSalario);
-                    System.out.println("Salario alterado para " + professor.getSalario() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarCpf(professor, novoSalario);
+                professor.setCpf(novoSalario);
+                System.out.println("Salario alterado para " + professor.getSalario() + " com sucesso.");
                 break;
 
             case 8:
@@ -265,59 +245,41 @@ public class subMenuEditar
             case 2:
                 System.out.println("Digite a nova idade:");
                 int novaIdade = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novaIdade))) {
-                    EditarPessoa.atualizarIdade(funcionario, novaIdade);
-                    funcionario.setIdade(novaIdade);
-                    System.out.println("Idade alterada para " + funcionario.getIdade() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarIdade(funcionario, novaIdade);
+                funcionario.setIdade(novaIdade);
+                System.out.println("Idade alterada para " + funcionario.getIdade() + " com sucesso.");
                 break;
 
             case 3:
                 System.out.println("Digite o novo cpf: ");
                 int novoCpf = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novoCpf))) {
-                    EditarPessoa.atualizarCpf(funcionario, novoCpf);
-                    funcionario.setCpf(novoCpf);
-                    System.out.println("Cpf alterado para " + funcionario.getCpf() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarCpf(funcionario, novoCpf);
+                funcionario.setCpf(novoCpf);
+                System.out.println("Cpf alterado para " + funcionario.getCpf() + " com sucesso.");
                 break;
 
             case 4:
                 System.out.println("Digite a nova função: ");
                 String novaFuncao = ScannerDeRespostas.scannearResposta.nextLine();
-                if (Verificador.ehString(novaFuncao) && Verificador.estaVazio(novaFuncao)) {
-                    EditarPessoa.atualizarFuncao(funcionario, novaFuncao);
-                    funcionario.setFuncao(novaFuncao);
-                    System.out.println("Função altera para " + funcionario.getFuncao() + " com sucesso.");
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarFuncao(funcionario, novaFuncao);
+                funcionario.setFuncao(novaFuncao);
+                System.out.println("Função altera para " + funcionario.getFuncao() + " com sucesso.");
                 break;
 
             case 5:
                 System.out.println("Digite o novo periodo: ");
                 String novoPeriodo = ScannerDeRespostas.scannearResposta.nextLine();
-                if (Verificador.ehString(novoPeriodo) && Verificador.estaVazio(novoPeriodo)) {
-                    EditarPessoa.atualizarPeriodo(funcionario, novoPeriodo);
-                    funcionario.setPeriodo(novoPeriodo);
-                    System.out.println("Periodo alterado " + funcionario.getPeriodo() + " com sucesso.");
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarPeriodo(funcionario, novoPeriodo);
+                funcionario.setPeriodo(novoPeriodo);
+                System.out.println("Periodo alterado " + funcionario.getPeriodo() + " com sucesso.");
                 break;
 
             case 6:
                 System.out.println("Digite o novo cpf: ");
                 int novoSalario = Integer.parseInt(ScannerDeRespostas.scannearResposta.nextLine());
-                if (Verificador.estaVazio(Integer.toHexString(novoSalario))) {
-                    EditarPessoa.atualizarCpf(funcionario, novoSalario);
-                    funcionario.setCpf(novoSalario);
-                    System.out.println("Salario alterado para " + funcionario.getSalario() + " com sucesso.");
-                    break;
-                }
-                System.out.println("Entrada invalida");
+                EditarPessoa.atualizarCpf(funcionario, novoSalario);
+                funcionario.setCpf(novoSalario);
+                System.out.println("Salario alterado para " + funcionario.getSalario() + " com sucesso.");
                 break;
 
             case 7:

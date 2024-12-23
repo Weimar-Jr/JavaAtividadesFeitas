@@ -1,4 +1,4 @@
-package Metodos;
+package Metodos.menus.menuDeEditar;
 
 import construtores.Pessoa;
 import dados.Listas;
