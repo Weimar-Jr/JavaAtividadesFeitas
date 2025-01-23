@@ -1,0 +1,3 @@
+tabelas funcionarios
+
+MeuBanco=# create table funcionarios ( id serial primary key, nome varchar(200), cargo varchar(100), cpf varchar(11), setor varchar(50), salario decimal(10, 2), recebeValeTransporte BOOLEAN, horasExtras int default 0, horasFaltasInjustificadas int default 0, horasPorSemana int);
