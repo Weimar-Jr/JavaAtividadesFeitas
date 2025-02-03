@@ -4,6 +4,6 @@ import java.util.Scanner;
 
 public class ScannerDeResposta
 {
-    static Scanner scannearResposta = new Scanner(System.in);
+    public static Scanner scannearResposta = new Scanner(System.in);
 
 }

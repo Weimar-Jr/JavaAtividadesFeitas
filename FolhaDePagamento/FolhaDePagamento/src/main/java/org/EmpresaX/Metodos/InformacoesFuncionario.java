@@ -12,6 +12,22 @@ public class InformacoesFuncionario {
         System.out.println("Setor: " + funcionario.getSetor());
     }
 
+    public static  void informacoesDeCadastro(Funcionario funcionario)
+    {
+        System.out.println("Nome: " + funcionario.getNome());
+        System.out.println("Cargo: " + funcionario.getCargo());
+        System.out.println("Setor: " + funcionario.getSetor());
+        System.out.println("Salario: " + funcionario.getSalario());
+        if(funcionario.getRecebeValeTransporte())
+        {
+            System.out.println("Recebe vale transporte");
+        }else{
+            System.out.println("Não recebe vale transporte");
+        }
+        System.out.println("Trabalha um total de: " + funcionario.getHorasPorSemana() + " de horas por semana");
+    }
+
+
     public static void informacoesCompletas(Funcionario funcionario)
     {
         System.out.println("================================================");

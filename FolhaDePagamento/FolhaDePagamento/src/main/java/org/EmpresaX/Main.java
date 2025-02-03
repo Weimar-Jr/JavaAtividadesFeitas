@@ -1,7 +1,12 @@
 package org.EmpresaX;
 
+import org.EmpresaX.Metodos.menus.Menu;
+import org.EmpresaX.dados.CentralDeConexaoSql;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        CentralDeConexaoSql.VerificarTabela();
+        Menu.menu();
     }
 }

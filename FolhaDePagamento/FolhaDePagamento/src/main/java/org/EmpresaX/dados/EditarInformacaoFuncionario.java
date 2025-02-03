@@ -19,28 +19,28 @@ class EditarInformacaoFuncionario
         {
             if(identificadorTipodeDado.equalsIgnoreCase("int"))
             {
-                stmt.setString(1, identificadorFuncionario);
-                stmt.setInt(2, Integer.parseInt(novoDado));
+                stmt.setString(2, identificadorFuncionario);
+                stmt.setInt(1, Integer.parseInt(novoDado));
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }else if(identificadorTipodeDado.equalsIgnoreCase("String"))
             {
-                stmt.setString(1, identificadorFuncionario);
-                stmt.setString(2, novoDado);
+                stmt.setString(2, identificadorFuncionario);
+                stmt.setString(1, novoDado);
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }
             else if(identificadorTipodeDado.equalsIgnoreCase("Double"))
             {
-                stmt.setString(1, identificadorFuncionario);
-                stmt.setDouble(2, Double.parseDouble(novoDado));
+                stmt.setString(2, identificadorFuncionario);
+                stmt.setDouble(1, Double.parseDouble(novoDado));
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }
             else if(identificadorTipodeDado.equalsIgnoreCase("boolean"))
             {
-                stmt.setString(1, identificadorFuncionario);
-                stmt.setBoolean(2, Boolean.parseBoolean(novoDado));
+                stmt.setString(2, identificadorFuncionario);
+                stmt.setBoolean(1, Boolean.parseBoolean(novoDado));
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }

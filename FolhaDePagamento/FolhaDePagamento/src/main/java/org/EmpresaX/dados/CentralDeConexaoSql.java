@@ -6,15 +6,22 @@ import org.EmpresaX.Classes.Funcionario;
 //deixar os outros metodos como protect e deixar esse publico e usar esse metodo como central para usar os outros
 public class CentralDeConexaoSql
 {
+    //verificar a tabela no banco de dados
+    public  static  void VerificarTabela()
+    {
+        VerificarSeTemTabela.criarTabelaSeNaoExistir();
+    }
+
+
     //crud basico
     public static void adicionar(Funcionario funcionario)
     {
-        AdiconarFuncionarioAoBanco.adicionarAoBanco(funcionario);
+        AdicionarFuncionarioAoBanco.adicionarAoBanco(funcionario);
     }
-    public static Funcionario procurar (String nomeOuCpf)
+    public static Funcionario procurar ()
     {
 
-        return  ProcurarFuncionario.procurarFuncionario(nomeOuCpf);
+        return  ProcurarFuncionario.procurarFuncionario();
     }
     public static void editar(String identificadorFuncionario, String sql, String identificadorTipodeDado, String novoDado)
     {
@@ -44,6 +51,12 @@ public class CentralDeConexaoSql
     }
 
     //configurações do sql
+    public  static  String editarSqlDoEditar(String sql)
+    {
+        String sql0 = SqlEditarDado.editarSql(sql);
+        return sql0;
+    }
+
 
     public static String getNomeBanco()
     {

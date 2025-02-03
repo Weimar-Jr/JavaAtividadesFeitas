@@ -1,6 +1,7 @@
 package org.EmpresaX.dados;
 
 import org.EmpresaX.Classes.Funcionario;
+import org.EmpresaX.Metodos.ScannerDeResposta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +12,10 @@ class ProcurarFuncionario
 {
     //aqui só vai pesquisar um funcionario e exibir as infomações dele e no final perguntar se quer editar algum dado dele
 
-    public static Funcionario procurarFuncionario(String nomeOuCpf)
+    public static Funcionario procurarFuncionario()
     {
+        System.out.println("Digite o nome do funcionario ou o cpf dele só com os numeros: ");
+        String nomeOuCpf = ScannerDeResposta.scannearResposta.nextLine();
         String query = "select * from funcionarios  where nome = ? or cpf = ?";
         try(Connection conexao = ConexaoPostegreSQL.Conexao();
             PreparedStatement stmt = conexao.prepareStatement(query))

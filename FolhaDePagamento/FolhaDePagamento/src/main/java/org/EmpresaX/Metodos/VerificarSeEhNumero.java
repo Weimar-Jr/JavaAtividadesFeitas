@@ -2,7 +2,7 @@ package org.EmpresaX.Metodos;
 
 public class VerificarSeEhNumero
 {
-    public boolean ehNumero(String numero)
+    public static boolean ehNumero(String numero)
     {
         //usando try catch pra verifcar se é numero
         try

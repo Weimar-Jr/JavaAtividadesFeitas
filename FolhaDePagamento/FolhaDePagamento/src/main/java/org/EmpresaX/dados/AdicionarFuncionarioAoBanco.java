@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-class AdiconarFuncionarioAoBanco
+class AdicionarFuncionarioAoBanco
 {
     public static void adicionarAoBanco(Funcionario funcionario)
     {
