@@ -1,0 +1,1 @@
+esse programa só funciona pra 2025, pode mudar as coisas contabeis nos proximos anos e só calcula certo até um salario de 8.157,41, fiz esse programa pra treinar sql com jdbc, então como é a primeira vez, ele vai estar bem simples e desorganizado, é isso, obg por ver.

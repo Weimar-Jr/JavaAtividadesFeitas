@@ -1,5 +1,7 @@
 package org.EmpresaX.dados;
 
+import org.EmpresaX.Metodos.contabilidade.Contabilidade;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +23,7 @@ class ListarFuncionarios {
                 System.out.println("Cpf: " + resultado.getString("cpf"));
                 System.out.println("Cargo: " + resultado.getString("cargo"));
                 System.out.println("Setor: " + resultado.getString("setor"));
-                System.out.println("Salario: " + resultado.getDouble("salario"));
+                Contabilidade.calcularFolha(resultado.getDouble("salario"), resultado.getBoolean("recebevaletransporte"), resultado.getInt("horasextras"), resultado.getInt("horasfaltasinjustificadas"), resultado.getInt("horasporsemana"));
             }
 
         }catch (SQLException e)
@@ -43,7 +45,7 @@ class ListarFuncionarios {
                 System.out.println("Nome: " + resultado.getString("nome"));
                 System.out.println("Cpf: " + resultado.getString("cpf"));
                 System.out.println("Cargo: " + resultado.getString("cargo"));
-                System.out.println("Salario: " + resultado.getDouble("salario"));
+                Contabilidade.calcularFolha(resultado.getDouble("salario"), resultado.getBoolean("recebevaletransporte"), resultado.getInt("horasextras"), resultado.getInt("horasfaltasinjustificadas"), resultado.getInt("horasporsemana"));
             }
 
         }catch (SQLException e)
@@ -65,7 +67,7 @@ class ListarFuncionarios {
                 System.out.println("Nome: " + resultado.getString("nome"));
                 System.out.println("Cpf: " + resultado.getString("cpf"));
                 System.out.println("Cargo: " + resultado.getString("cargo"));
-                System.out.println("Salario: " + resultado.getDouble("salario"));
+                Contabilidade.calcularFolha(resultado.getDouble("salario"), resultado.getBoolean("recebevaletransporte"), resultado.getInt("horasextras"), resultado.getInt("horasfaltasinjustificadas"), resultado.getInt("horasporsemana"));
             }
 
         }catch (SQLException e)
@@ -87,7 +89,7 @@ class ListarFuncionarios {
                 System.out.println("Nome: " + resultado.getString("nome"));
                 System.out.println("Cpf: " + resultado.getString("cpf"));
                 System.out.println("Cargo: " + resultado.getString("cargo"));
-                System.out.println("Salario: " + resultado.getDouble("salario"));
+                Contabilidade.calcularFolha(resultado.getDouble("salario"), resultado.getBoolean("recebevaletransporte"), resultado.getInt("horasextras"), resultado.getInt("horasfaltasinjustificadas"), resultado.getInt("horasporsemana"));
             }
 
         }catch (SQLException e)
