@@ -27,7 +27,7 @@ class ListarFuncionarios {
                     Contabilidade.calcularFolha(resultado.getBigDecimal("salario"), resultado.getBoolean("recebe_vale_transporte"), resultado.getInt("horas_extras"), resultado.getInt("horas_faltas_injustificadas"), resultado.getInt("horas_por_semana"));
                 } ;
 
-
+                resultado.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -47,7 +47,7 @@ class ListarFuncionarios {
                         System.out.println("Setor: " + resultado.getString("setor"));
                         Contabilidade.calcularFolha(resultado.getBigDecimal("salario"), resultado.getBoolean("recebe_vale_transporte"), resultado.getInt("horas_extras"), resultado.getInt("horas_faltas_injustificadas"), resultado.getInt("horas_por_semana"));
                 };
-
+                resultado.close();
 
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -1,8 +1,10 @@
 package org.EmpresaX.Metodos.menus;
 
+import org.EmpresaX.Classes.Funcionario;
 import org.EmpresaX.Metodos.ScannerDeResposta;
 import org.EmpresaX.Metodos.VerificarSeEhNumero;
 import org.EmpresaX.Metodos.contabilidade.CalcularAvulso;
+import org.EmpresaX.Metodos.contabilidade.Contabilidade;
 import org.EmpresaX.Metodos.menus.adicionar.MetodoAdicionar;
 import org.EmpresaX.Metodos.menus.editar.MetodoEditar;
 import org.EmpresaX.Metodos.menus.excluir.MetodoExcluir;
@@ -38,10 +40,22 @@ public class Menu {
                             CalcularAvulso.calcularFolhaAvulso();
                             break;
                         case 3:
-                            CentralDeConexaoSql.procurar();
+                            Funcionario funcionario = CentralDeConexaoSql.procurar();
+                            System.out.println("Nome: " + funcionario.getNome());
+                            System.out.println("Cpf: " + funcionario.getCpf());
+                            System.out.println("Cargo: " +funcionario.getCargo());
+                            System.out.println("Setor: " + funcionario.getSetor());
+                            Contabilidade.calcularFolha(funcionario.getSalario(), funcionario.getRecebeValeTransporte(), funcionario.getHorasExtras(), funcionario.getHorasFaltasInjustificadas(), funcionario.getHorasPorSemana());
+                            System.out.println("Quer editar esse funcionario? [s/n]: ");
+                            String respostaEditar = ScannerDeResposta.scannearResposta.nextLine();
+                            if(respostaEditar.equalsIgnoreCase("s"))
+                            {
+                                MetodoEditar.editar(funcionario);
+                            }
+                            System.out.println("saiu com sucesso.");
                             break;
                         case 4:
-                            MetodoEditar.editar();
+                            MetodoEditar.editar(null);
                             break;
                         case 5:
                             MetodoExcluir.excluirFuncionario();

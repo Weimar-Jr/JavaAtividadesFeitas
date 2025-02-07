@@ -31,9 +31,11 @@ class ProcurarFuncionario
                 Funcionario funcionario = new Funcionario(resultado.getString("nome"), resultado.getString("cargo"),
                         resultado.getString("cpf"), resultado.getString("setor"), resultado.getBigDecimal("salario"),
                         resultado.getBoolean("recebe_vale_transporte"), resultado.getInt("horas_por_semana"));
+                resultado.close();
                 return funcionario;
             }else{
                 System.out.println("Funcionario não encontrado.");
+                resultado.close();
             }
         } catch (SQLException e)
         {

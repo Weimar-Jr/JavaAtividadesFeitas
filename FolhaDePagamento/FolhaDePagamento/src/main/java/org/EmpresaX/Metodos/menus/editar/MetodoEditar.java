@@ -10,10 +10,13 @@ import java.math.BigDecimal;
 
 public class MetodoEditar {
 
-    public  static  void editar()
+    public  static  void editar(Funcionario funcionario)
     {
+
         boolean funcionando = true;
-        Funcionario funcionario = CentralDeConexaoSql.procurar();
+        if(funcionario == null) {
+            funcionario = CentralDeConexaoSql.procurar();
+        }
         if( funcionario != null) {
             while (funcionando) {
                 System.out.println("Digite \"1\" para editar o nome. ");
