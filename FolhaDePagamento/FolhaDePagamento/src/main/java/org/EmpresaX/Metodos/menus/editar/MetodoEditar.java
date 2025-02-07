@@ -6,6 +6,8 @@ import org.EmpresaX.Metodos.VerificarCpf;
 import org.EmpresaX.Metodos.VerificarSeEhNumero;
 import org.EmpresaX.dados.CentralDeConexaoSql;
 
+import java.math.BigDecimal;
+
 public class MetodoEditar {
 
     public  static  void editar()
@@ -115,14 +117,14 @@ public class MetodoEditar {
                     case 5:
                         System.out.println("Digite o novo salario: ");
                         String resposta5 = ScannerDeResposta.scannearResposta.nextLine();
-                        if (VerificarSeEhNumero.ehNumero(resposta5)) {
-                            Double respostaSalario = Double.parseDouble(resposta5);
-                            funcionario.setSalario(respostaSalario);
-                            System.out.println("Salario modificado para " + respostaSalario + " com sucesso.");
+                        if (VerificarSeEhNumero.ehNumero(resposta5  ) && resposta5.matches("\\d+(\\.\\d+)?")) {
+                            BigDecimal salario = new BigDecimal(resposta5);
+                            funcionario.setSalario(salario);
+                            System.out.println("Salario modificado para " + salario + " com sucesso.");
                             String sql = CentralDeConexaoSql.editarSqlDoEditar("salario");
-                            CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "Double", resposta5);
+                            CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "BigDecimal", resposta5);
                         } else {
-                            System.out.println("Por favor escreva um salario valido.");
+                            System.out.println("Por favor escreva um salario valido com separação de centavos usando ponto.");
                         }
                         break;
                     case 6:
@@ -130,12 +132,12 @@ public class MetodoEditar {
                         String resposta6 = ScannerDeResposta.scannearResposta.nextLine();
                         if(resposta6.equalsIgnoreCase("sim"))
                         {
-                            String sql = CentralDeConexaoSql.editarSqlDoEditar("recebevaletransporte");
+                            String sql = CentralDeConexaoSql.editarSqlDoEditar("recebe_vale_transporte");
                             funcionario.setRecebeValeTransporte(true);
                             System.out.println("modificado para \"sim\" com sucesso.");
                             CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "booleon", "true");
                         } else if (resposta6.equalsIgnoreCase("nao" ) || resposta6.equalsIgnoreCase("não")) {
-                            String sql = CentralDeConexaoSql.editarSqlDoEditar("recebevaletransporte");
+                            String sql = CentralDeConexaoSql.editarSqlDoEditar("recebe_vale_transporte");
                             funcionario.setRecebeValeTransporte(false);
                             System.out.println("modificado para \"não\" com sucesso.");
                             CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "booleon", "false");
@@ -149,7 +151,7 @@ public class MetodoEditar {
                             int respostaNovaHoraExtra = Integer.parseInt(resposta7) + funcionario.getHorasExtras();
                             funcionario.setHorasExtras(respostaNovaHoraExtra);
                             System.out.println("Adicionado o numero " + resposta7 + " de horas extras, no total ficou: " + respostaNovaHoraExtra);
-                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horasextras");
+                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horas_extras");
                             CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "int", resposta7);
 
                         }else{
@@ -164,7 +166,7 @@ public class MetodoEditar {
                             int respostaNovaHoraInjustificada = Integer.parseInt(resposta8) + funcionario.getHorasFaltasInjustificadas();
                             funcionario.setHorasFaltasInjustificadas(respostaNovaHoraInjustificada);
                             System.out.println("Adicionado o numero " + resposta8 + " de horas extras, no total ficou: " + respostaNovaHoraInjustificada);
-                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horasfaltasinjustificadas");
+                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horas_faltas_injustificadas");
                             CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "int", resposta8);
 
                         }else{
@@ -179,7 +181,7 @@ public class MetodoEditar {
                             int respostaNovaHora = Integer.parseInt(resposta9);
                             funcionario.setHorasPorSemana(respostaNovaHora);
                             System.out.println("Horas semanais modificada para " + respostaNovaHora + "por semana.");
-                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horasporsemana");
+                            String sql = CentralDeConexaoSql.editarSqlDoEditar("horas_por_semana");
                             CentralDeConexaoSql.editar(funcionario.getCpf(), sql, "int", resposta9);
 
 

@@ -16,7 +16,8 @@ class ProcurarFuncionario
     {
         System.out.println("Digite o nome do funcionario ou o cpf dele só com os numeros: ");
         String nomeOuCpf = ScannerDeResposta.scannearResposta.nextLine();
-        String query = "select * from funcionarios  where nome = ? or cpf = ?";
+
+        String query = "select * from funcionarios  where nome = ? or cpf = ?;";
         try(Connection conexao = ConexaoPostegreSQL.Conexao();
             PreparedStatement stmt = conexao.prepareStatement(query))
         {
@@ -26,16 +27,19 @@ class ProcurarFuncionario
 
             //executando a query
             ResultSet resultado = stmt.executeQuery();
-            Funcionario funcionario = new Funcionario(resultado.getString("nome"), resultado.getString("cargo"),
-                    resultado.getString("cpf"), resultado.getString("setor"), resultado.getDouble("salario"),
-                    resultado.getBoolean("recebevaletransporte"), resultado.getInt("horasporsemana"));
-            return funcionario;
-
+            if(resultado.next()) {
+                Funcionario funcionario = new Funcionario(resultado.getString("nome"), resultado.getString("cargo"),
+                        resultado.getString("cpf"), resultado.getString("setor"), resultado.getBigDecimal("salario"),
+                        resultado.getBoolean("recebe_vale_transporte"), resultado.getInt("horas_por_semana"));
+                return funcionario;
+            }else{
+                System.out.println("Funcionario não encontrado.");
+            }
         } catch (SQLException e)
         {
             e.printStackTrace();
             return null;
         }
-
+        return null;
     }
 }

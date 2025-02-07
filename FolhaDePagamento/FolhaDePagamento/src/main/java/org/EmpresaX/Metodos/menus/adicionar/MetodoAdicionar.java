@@ -7,6 +7,8 @@ import org.EmpresaX.Metodos.VerificarCpf;
 import org.EmpresaX.Metodos.VerificarSeEhNumero;
 import org.EmpresaX.dados.CentralDeConexaoSql;
 
+import java.math.BigDecimal;
+
 public class MetodoAdicionar {
 
     public static void adicionar()
@@ -42,42 +44,48 @@ public class MetodoAdicionar {
                                 break;
                             case 4:
                                 setor = "TI";
+                                break;
                             default:
                                 System.out.println("Opção invalida.");
                                 setor = "nada";
+                                break;
 
                         }
 
                         if(!setor.equalsIgnoreCase("nada")) {
-                            System.out.println("Digite o valor do salario do funcionario, Só numeros e virgula:");
-                            Double respostaSalario = Double.parseDouble(ScannerDeResposta.scannearResposta.nextLine());
+                            System.out.println("Digite o valor do salario do funcionario, Só numeros e ponto antes dos centavos:");
+                            String respostaSalario = ScannerDeResposta.scannearResposta.nextLine();
+                            if(VerificarSeEhNumero.ehNumero(respostaSalario) && respostaSalario.matches("\\d+(\\.\\d+)?")) {
+                                BigDecimal salario = new BigDecimal(respostaSalario);
+                                System.out.println("Digite \"sim\" caso o funcionario recebera vale transporte e \"não\" caso não receba: ");
+                                String respostaValeTransporte = ScannerDeResposta.scannearResposta.nextLine();
+                                if (respostaValeTransporte.equalsIgnoreCase("sim") || respostaValeTransporte.equalsIgnoreCase("não")) {
+                                    boolean valeTransporte;
+                                    if (respostaValeTransporte.equalsIgnoreCase("Sim")) {
+                                        valeTransporte = true;
+                                    } else {
+                                        valeTransporte = false;
+                                    }
 
-                            System.out.println("Digite \"sim\" caso o funcionario recebera vale transporte e \"não\" caso não receba: ");
-                            String respostaValeTransporte = ScannerDeResposta.scannearResposta.nextLine();
-                            if (respostaValeTransporte.equalsIgnoreCase("sim") || respostaValeTransporte.equalsIgnoreCase("não")) {
-                                boolean valeTransporte;
-                                if (respostaValeTransporte.equalsIgnoreCase("Sim")) {
-                                    valeTransporte = true;
+                                    System.out.println("Digite o numero de horas semanais que o funcionario atuara: ");
+                                    int respostaHorasSemanais = Integer.parseInt(ScannerDeResposta.scannearResposta.nextLine());
+
+                                    Funcionario funcionario = new Funcionario(respostaNome, respostaCargo, respostaCpf, setor, salario, valeTransporte, respostaHorasSemanais);
+                                    InformacoesFuncionario.informacoesDeCadastro(funcionario);
+                                    System.out.println("Esta correto? Se sim, digite \"sim\": ");
+                                    String respostaFinal = ScannerDeResposta.scannearResposta.nextLine();
+                                    if (respostaFinal.equalsIgnoreCase("sim")) {
+                                        System.out.println("Funcionario salvo com sucesso.");
+                                        CentralDeConexaoSql.adicionar(funcionario);
+                                    } else {
+                                        System.out.println("Cancelado com sucesso.");
+                                    }
+
                                 } else {
-                                    valeTransporte = false;
+                                    System.out.println("Resposta invalida.");
                                 }
-
-                                System.out.println("Digite o numero de horas semanais que o funcionario atuara: ");
-                                int respostaHorasSemanais = Integer.parseInt(ScannerDeResposta.scannearResposta.nextLine());
-
-                                Funcionario funcionario = new Funcionario(respostaNome, respostaCargo, respostaCpf, setor, respostaSalario, valeTransporte, respostaHorasSemanais);
-                                InformacoesFuncionario.informacoesDeCadastro(funcionario);
-                                System.out.println("Esta correto? Se sim, digite \"sim\": ");
-                                String respostaFinal = ScannerDeResposta.scannearResposta.nextLine();
-                                if (respostaFinal.equalsIgnoreCase("sim")) {
-                                    System.out.println("Funcionario salvo com sucesso.");
-                                } else {
-                                    CentralDeConexaoSql.adicionar(funcionario);
-                                    System.out.println("Cancelado com sucesso.");
-                                }
-
-                            } else {
-                                System.out.println("Resposta invalida.");
+                            }else{
+                                System.out.println("Por favor escreva um salario valido com separação de centavos usando ponto.");
                             }
                         }else{
                             System.out.println("Opção invalida.");

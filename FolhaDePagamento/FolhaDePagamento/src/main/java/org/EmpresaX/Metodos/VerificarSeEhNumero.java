@@ -1,5 +1,7 @@
 package org.EmpresaX.Metodos;
 
+import java.math.BigDecimal;
+
 public class VerificarSeEhNumero
 {
     public static boolean ehNumero(String numero)
@@ -7,7 +9,7 @@ public class VerificarSeEhNumero
         //usando try catch pra verifcar se é numero
         try
         {
-            int teste = Integer.parseInt(numero);
+            BigDecimal numero2 = new BigDecimal(numero);
             return  true;
         }catch (Exception e)
         {

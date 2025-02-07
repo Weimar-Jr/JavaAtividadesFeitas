@@ -33,21 +33,9 @@ public class CentralDeConexaoSql
     }
 
     //listar funcionarios
-    public static void listarTodosFuncionarios()
+    public static void listarFuncionarios(String setor)
     {
-        ListarFuncionarios.listarTodosOsFuncionario();
-    }
-    public static void listarFuncionariosAdministracao()
-    {
-        ListarFuncionarios.listarFuncionariosAdministracao();
-    }
-    public static void listarFuncionariosContabilidade()
-    {
-        ListarFuncionarios.listarFuncionariosContabilidade();
-    }
-    public static void listarFuncionariosTI()
-    {
-        ListarFuncionarios.listarFuncionariosTI();
+        ListarFuncionarios.listarFuncionarios(setor);
     }
 
     //configurações do sql

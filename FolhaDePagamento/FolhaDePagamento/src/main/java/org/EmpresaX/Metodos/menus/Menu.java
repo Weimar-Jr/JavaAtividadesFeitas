@@ -8,6 +8,7 @@ import org.EmpresaX.Metodos.menus.editar.MetodoEditar;
 import org.EmpresaX.Metodos.menus.excluir.MetodoExcluir;
 import org.EmpresaX.Metodos.menus.exibirFuncionarios.MetodoExibir;
 import org.EmpresaX.Metodos.menus.sql.MetodoSql;
+import org.EmpresaX.dados.CentralDeConexaoSql;
 
 public class Menu {
     public static void menu()
@@ -18,11 +19,12 @@ public class Menu {
             try {
                 System.out.println("Digite \"1\" para adicionar funcionario.");
                 System.out.println("Digite \"2\" para Calcular folha avulso.");
-                System.out.println("Digite \"3\" para editar funcionario.");
-                System.out.println("Digite \"4\" para excluir funcionario.");
-                System.out.println("Digite \"5\" para listar funcionarios.");
-                System.out.println("Digite \"6\" para configurar sql.");
-                System.out.println("Digite \"7\" para encerrar o programa.");
+                System.out.println("Digite \"3\" para procurar um funcionario.");
+                System.out.println("Digite \"4\" para editar funcionario.");
+                System.out.println("Digite \"5\" para excluir funcionario.");
+                System.out.println("Digite \"6\" para listar funcionarios.");
+                System.out.println("Digite \"7\" para configurar sql.");
+                System.out.println("Digite \"8\" para encerrar o programa.");
 
                 String resposta = ScannerDeResposta.scannearResposta.nextLine();
                 if (VerificarSeEhNumero.ehNumero(resposta)) {
@@ -36,18 +38,21 @@ public class Menu {
                             CalcularAvulso.calcularFolhaAvulso();
                             break;
                         case 3:
-                            MetodoEditar.editar();
+                            CentralDeConexaoSql.procurar();
                             break;
                         case 4:
-                            MetodoExcluir.excluirFuncionario();
+                            MetodoEditar.editar();
                             break;
                         case 5:
-                            MetodoExibir.exbirFuncionarios();
+                            MetodoExcluir.excluirFuncionario();
                             break;
                         case 6:
-                            MetodoSql.configurarSql();
+                            MetodoExibir.exibirFuncionarios();
                             break;
                         case 7:
+                            MetodoSql.configurarSql();
+                            break;
+                        case 8:
                             funcionando = false;
                             break;
                         default:

@@ -1,6 +1,8 @@
 package org.EmpresaX.Classes;
 
 
+import java.math.BigDecimal;
+
 public class Funcionario
 {
     // propriedades
@@ -9,7 +11,7 @@ public class Funcionario
     private String cpf;
     private String setor;
 
-    private Double salario;
+    private BigDecimal salario;
     private boolean recebeValeTransporte;
     private int horasExtras = 0;
     private int horasFaltasInjustificadas = 0;
@@ -51,11 +53,11 @@ public class Funcionario
         this.setor = setor;
     }
 
-    public  Double getSalario()
+    public  BigDecimal getSalario()
     {
         return salario;
     }
-    public void setSalario(Double salario)
+    public void setSalario(BigDecimal salario)
     {
         this.salario = salario;
     }
@@ -97,7 +99,7 @@ public class Funcionario
     }
 
 
-    public Funcionario(String nome, String cargo, String cpf, String setor, Double salario, boolean recebeValeTransporte, int horasPorSemana)
+    public Funcionario(String nome, String cargo, String cpf, String setor, BigDecimal salario, boolean recebeValeTransporte, int horasPorSemana)
     {
         this.nome = nome;
         this.cargo = cargo;

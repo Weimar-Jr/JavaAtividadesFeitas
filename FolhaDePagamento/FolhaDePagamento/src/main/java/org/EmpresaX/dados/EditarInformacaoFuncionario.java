@@ -1,5 +1,6 @@
 package org.EmpresaX.dados;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -30,10 +31,10 @@ class EditarInformacaoFuncionario
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }
-            else if(identificadorTipodeDado.equalsIgnoreCase("Double"))
+            else if(identificadorTipodeDado.equalsIgnoreCase("BigDecimal"))
             {
                 stmt.setString(2, identificadorFuncionario);
-                stmt.setDouble(1, Double.parseDouble(novoDado));
+                stmt.setBigDecimal(1, new BigDecimal(novoDado));
                 stmt.executeUpdate();
                 System.out.println("Dado atualizado com sucesso.");
             }

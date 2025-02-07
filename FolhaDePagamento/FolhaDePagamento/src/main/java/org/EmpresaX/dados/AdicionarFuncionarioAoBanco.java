@@ -11,8 +11,8 @@ class AdicionarFuncionarioAoBanco
 {
     public static void adicionarAoBanco(Funcionario funcionario)
     {
-        String sql = "INSERT INTO funcionarios (nome, cargo, cpf, setor, salario, recebevaletransporte, horasextras, horasfaltasinjustificadas, horasporsemana) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO funcionarios (nome, cargo, cpf, setor, salario, recebe_vale_transporte, horas_extras, horas_faltas_injustificadas, horas_por_semana) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try(Connection conexao = ConexaoPostegreSQL.Conexao();
             PreparedStatement stmt = conexao.prepareStatement(sql))
@@ -21,7 +21,7 @@ class AdicionarFuncionarioAoBanco
             stmt.setString(2, funcionario.getCargo());
             stmt.setString(3, funcionario.getCpf());
             stmt.setString(4, funcionario.getSetor());
-            stmt.setDouble(5, funcionario.getSalario());
+            stmt.setBigDecimal(5, funcionario.getSalario());
             stmt.setBoolean(6, funcionario.getRecebeValeTransporte());
             stmt.setInt(7, funcionario.getHorasExtras());
             stmt.setInt(8, funcionario.getHorasFaltasInjustificadas());

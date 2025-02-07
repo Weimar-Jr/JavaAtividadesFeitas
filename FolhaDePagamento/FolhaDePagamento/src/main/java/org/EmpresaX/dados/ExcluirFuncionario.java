@@ -8,7 +8,7 @@ class ExcluirFuncionario
 {
     public static void excluirFuncionario(String identificadorFuncionario)
     {
-        String sql = "delete from funcionarios where nome = ? or cpf = ?";
+        String sql = "delete from funcionarios where nome = ? or cpf = ?;";
 
         try(Connection conexao = ConexaoPostegreSQL.Conexao();
             PreparedStatement stmt  = conexao.prepareStatement(sql))

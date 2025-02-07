@@ -10,8 +10,8 @@ class VerificarSeTemTabela {
     {
         // para que se n tiver a tabela, ela ser criada
         String sql = "CREATE TABLE IF NOT EXISTS funcionarios ( id SERIAL PRIMARY KEY,  nome VARCHAR(255), cargo VARCHAR(100)," +
-                " cpf VARCHAR(14), setor VARCHAR(100), salario DECIMAL(10, 2), recebeValeTransporte BOOLEAN, " +
-                "horasExtras INT DEFAULT 0, horasFaltasInjustificadas INT DEFAULT 0, horasPorSemana INT);";
+                " cpf VARCHAR(14), setor VARCHAR(100), salario DECIMAL(10, 2), recebe_vale_transporte BOOLEAN, " +
+                "horas_extras INT DEFAULT 0, horas_faltas_injustificadas INT DEFAULT 0, horas_por_semana INT);";
 
 
 

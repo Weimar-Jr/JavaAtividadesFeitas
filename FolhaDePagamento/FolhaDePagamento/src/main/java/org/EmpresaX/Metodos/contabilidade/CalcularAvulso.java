@@ -3,6 +3,8 @@ package org.EmpresaX.Metodos.contabilidade;
 import org.EmpresaX.Metodos.ScannerDeResposta;
 import org.EmpresaX.Metodos.VerificarSeEhNumero;
 
+import java.math.BigDecimal;
+
 public class CalcularAvulso {
     public static void calcularFolhaAvulso()
     {
@@ -11,7 +13,7 @@ public class CalcularAvulso {
         String respostaSalarioString = ScannerDeResposta.scannearResposta.nextLine();
         if(VerificarSeEhNumero.ehNumero(respostaSalarioString))
         {
-            double respostaSalarioDouble = Double.parseDouble(respostaSalarioString);
+            BigDecimal respostaSalarioBD = new BigDecimal(respostaSalarioString);
 
             System.out.println("Digite quantas horas extras a pessoa fez. Se não fez nenhuma, digite 0: ");
             String respostaHorasExtras = ScannerDeResposta.scannearResposta.nextLine();
@@ -57,7 +59,7 @@ public class CalcularAvulso {
                     if(VerificarSeEhNumero.ehNumero(respostaHorasFaltadas))
                     {
                         int horasFaltadasInt = Integer.parseInt(respostaHorasFaltadas);
-                        Contabilidade.calcularFolha(respostaSalarioDouble, recebeVale, respostaHorasExtrasInt, horasFaltadasInt, respostaHoraSemanalInt);
+                        Contabilidade.calcularFolha(respostaSalarioBD, recebeVale, respostaHorasExtrasInt, horasFaltadasInt, respostaHoraSemanalInt);
 
                     }else{
                         System.out.println("Por favor, digite apenas numeros");
